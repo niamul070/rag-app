@@ -1,4 +1,5 @@
 # Node
+.cursorindexinignore
 .specstory/
 node_modules/
 build/
