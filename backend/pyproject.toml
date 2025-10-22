@@ -1,0 +1,45 @@
+[project]
+name = "rag-chatbot-backend"
+version = "0.1.0"
+description = "Backend for RAG Chatbot using FastAPI"
+authors = [ { name = "Your Name", email = "you@example.com" } ]
+readme = "README.md"
+requires-python = ">=3.9"
+
+dependencies = [
+	"fastapi==0.104.1",
+	"uvicorn[standard]==0.24.0",
+	"pydantic==2.5.0",
+	"python-multipart==0.0.6",
+	"chromadb==0.4.18",
+	"google-generativeai==0.3.2",
+	"pypdf2==3.0.1",
+	"beautifulsoup4==4.12.2",
+	"Markdown==3.5.1",
+	"sentence-transformers==2.2.2",
+	"sqlalchemy==2.0.23",
+	"python-dotenv==1.0.0",
+	"httpx==0.25.2",
+	"numpy>=1.24,<2.0",
+	"huggingface-hub==0.25.2",
+]
+
+# sqlite3 is part of the stdlib (via the sqlite C library); do not include as a dependency
+
+[tool.pdm]
+venv.in_project = true
+
+[tool.pdm.scripts]
+start = "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["services*", "models*"]
+
+[tool.setuptools]
+py-modules = ["main"]
